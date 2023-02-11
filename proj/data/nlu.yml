@@ -1,0 +1,113 @@
+version: "0.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good afternoon    
+    - good evening
+    - goodmorning
+    - goodafternoon
+    - goodevening 
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - what's up
+    - whats up
+    - sup
+
+- intent: buy_phone_laptop
+  examples: |
+    - I would like to buy a [phone](category)
+    - I want to buy a [laptop](category)
+    - Please suggest me a good [laptop](category)
+    - I wanted to purchase a [phone](category)
+    - Can you recommend me a [laptop](category)
+
+- intent: latest_news_phones_laptops
+  examples: |
+    - Whats the latest news with [phones](category)
+    - Can you tell me abou tthe trends regarding [phones](category)
+    - Whats going in the tech world for [laptops](category)
+    - Can you show me the trends in [laptops](category)
+
+- intent: goodbye
+  examples: |
+    - cu
+    - c u
+    - c ya
+    - talk to you later
+    - good bye
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
