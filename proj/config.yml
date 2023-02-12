@@ -15,6 +15,7 @@ pipeline:
    - name: DIETClassifier
      epochs: 200
      random_seed: 2
+   - name: EntitySynonymMapper
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

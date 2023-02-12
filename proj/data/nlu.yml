@@ -21,20 +21,30 @@ nlu:
     - whats up
     - sup
 
-- intent: buy_phone_laptop
+- intent: buy_electronics
   examples: |
     - I would like to buy a [phone](category)
     - I want to buy a [laptop](category)
     - Please suggest me a good [laptop](category)
     - I wanted to purchase a [phone](category)
     - Can you recommend me a [laptop](category)
+    - give me some recommendations for [mobile](category)
+    - Can you suggest a [laptop](category)
+    - I wanna buy a [mobile](category)
+    - Im interested in purchasing a [phone](category)
+    - I wanted to buy a [refrigerator](category)
+    - show me a good [air conditioner](category)
+    - please recommend me a [washing machine](category)
 
-- intent: latest_news_phones_laptops
+- intent: latest_news_electronics
   examples: |
     - Whats the latest news with [phones](category)
     - Can you tell me abou tthe trends regarding [phones](category)
     - Whats going in the tech world for [laptops](category)
     - Can you show me the trends in [laptops](category)
+    - And new releases for [mobiles](category), whats the news
+    - update me on the [mobile](category) news
+    - show me the latest news for [mobiles](category)
 
 - intent: goodbye
   examples: |
@@ -111,3 +121,13 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- synonym: phone
+  examples: |
+    - mobile
+    - mobiles
+    - phones
+
+- synonym: laptop
+  examples: |
+    - laptops

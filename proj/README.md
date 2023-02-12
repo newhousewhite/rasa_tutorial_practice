@@ -1,7 +1,15 @@
 # Tutorial 1: Conversational AI with RASA [3]
 
-1. under proj/data/nlu.yml, fill training data
+### Train
+Under proj/data/nlu.yml, fill training data. Then, fill config.yml. Then
+```commandline
+python -m rasa train nlu
+```
 
+To test,
+```commandline
+python -m rasa shell nlu
+```
 
 
 # References
