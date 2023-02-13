@@ -1,4 +1,4 @@
-version: "0.1"
+version: "3.1"
 
 nlu:
 - intent: greet
@@ -131,3 +131,9 @@ nlu:
 - synonym: laptop
   examples: |
     - laptops
+
+- lookup: category
+  examples: |
+    refrigerator
+    washing machine
+    air conditioner
