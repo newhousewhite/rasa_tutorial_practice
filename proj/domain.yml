@@ -11,6 +11,7 @@ intents:
   - give_information
   - goodbye
   - mood_great
+  - bot_challenge
 
 entities:
   - category
@@ -32,6 +33,8 @@ responses:
     - text: "It was nice talking to you! Goodbye!"
   utter_got_it:
     - text: "Got it."
+  utter_iamabot:
+    - text: "I'm a bot."
 
 actions:
   - utter_how_can_I_help
@@ -42,5 +45,6 @@ actions:
   - action_search
   - action_show_latest_news
   - utter_got_it
+  - utter_iamabot
 
 
