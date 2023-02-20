@@ -61,11 +61,63 @@ Update endpoints.yml
 ```commandline
 python -m rasa shell
 ```
-
 <b>Rules</b>: always follow the same path. You can ahve conditions with Rules or have rules for conversation start. 
 
 c.f.) <b>Stories</b> uses a probabilistic model that is generalizable to unseen conversation paths.
 
+### Dialogue Policies
+* Data augmentation: an amount of new storeis to create from the existing stories
+* Rasa crate longer stories by putting together some shorter sotries
+* Improve the performance of our models
+* Allows dialogue maangement to ignore history of the conversation
+
+#### Memoization Policy
+* Mimics the stories from your training data by checking story matching in your stories.yml
+  * If matching, confidence = 1.0
+  * If not matching, predict None with confidence 0.0
+* Usually combines with other policies, cuz users do not always follow our manually created stories.
+* Optimized for its precision  & not for recall
+  * e.g.) if a user asked time, you'd want to trigger action_check_time.
+
+
+#### RulePolicy
+* allows you to add business logic.
+* specific intent can be followed by a specific action, regardless of what happened in the conversation.
+* An intent can only be mapped to at most one action.
+
+#### sklearn policy
+* to predict the next action
+* default model: LR (you can use RF, DL, ..., instead)
+
+#### Embedding (TEDP) policy
+* Transformer Embedding Dialogue (TED) Policy
+* to perdict next action
+* features used:
+  * what the last action was
+  * what intents & entities were predicted for the current user input
+  * what slots are set.
+  * takes previous states of dialogue based on max_history
+* learns from training stories
+* good at handles chitchat
+
+#### Fallback and Human Handoff
+* See [this](https://rasa.com/docs/rasa/fallback-handoff/)
+
+#### Policy Priority
+Form -> Fallback, TwoStageFallback -> Memoization, Augmented Memoization -> Mapping -> Embedding, Keras & Sklearn
+* Of course, you can change the priority.
+
+### Slots: Bot's Memory
+* define slots through
+  * entities: can remember important values by users through entities
+  * custom actions: info from the outside for example results extracted from the external DB.
+* types:
+  * text (bot only checks if provided or not, not actual string content)
+  * bool (value matters, e.g., Is_authenticated)
+  * categorical
+  * float
+  * List (if you wanna store multiple values)
+  * unfeaturized
 
 # References
 1. RASA learning: [conversational AI with RASA](https://learning.rasa.com/conversational-ai-with-rasa)

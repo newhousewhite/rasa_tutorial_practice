@@ -35,16 +35,21 @@ class ActionSearch(Action):
     def name(self) -> Text:
         return "action_search"
 
-    def run(self, dispatcher: CollectingDispatcher,
+    def run(self,
+            dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]
+            domain: Dict[Text, Any],
             ) -> List[Dict[Text, Any]]:
-            # calling the DB
-            # calling an API
-            # do anything
-            # all calculations are done
+        # calling the DB
+        # calling an API
+        # do anything
+        # all calculations are done
+        category = tracker.get_slot('category_slot')
+        ram = tracker.get_slot('ram_slot')
+        battery = tracker.get_slot('battery_slot')
 
         dispatcher.utter_message(text="Here are your search results")
+        dispatcher.utter_message(text="The features you entered: " + str(category) + ", " + str(ram) + ", " + str(battery))
 
         return []
 

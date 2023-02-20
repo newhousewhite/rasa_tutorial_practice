@@ -20,6 +20,32 @@ entities:
   - camera
   - phone
 
+slots:
+  category_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: category
+  ram_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: ram
+  battery_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery
+  camera_slot:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: camera
+
 responses:
   utter_how_can_I_help:
   - text: "Welcome. I'm your shopping bot. I can help you with finding a phone or laptop and providing the latest news for them!"
