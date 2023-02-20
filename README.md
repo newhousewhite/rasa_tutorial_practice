@@ -31,6 +31,7 @@ source ~/.bash_profile
 git clone https://github.com/RasaHQ/rasa.git
 cd rasa
 poetry install
+poetry update   # not included in the instruction, but good to do.
 pip install rasa[full]
 ```
 
