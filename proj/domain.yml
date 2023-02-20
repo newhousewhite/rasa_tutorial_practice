@@ -1,0 +1,46 @@
+version: "3.1"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+  - greet
+  - buy_electronics
+  - latest_news_electronics
+  - give_information
+  - goodbye
+  - mood_great
+
+entities:
+  - category
+  - ram
+  - battery
+  - camera
+  - phone
+
+responses:
+  utter_how_can_I_help:
+  - text: "Welcome. I'm your shopping bot. I can help you with finding a phone or laptop and providing the latest news for them!"
+  utter_ask_ram:
+  - text: "How much GM RAM are you looking for?"
+  utter_ask_camera:
+  - text: "What megapixel camera are you looking for?"
+  utter_ask_battery:
+  - text: "How much battery capacity are you looking for in the device?"
+  utter_goodbye:
+    - text: "It was nice talking to you! Goodbye!"
+  utter_got_it:
+    - text: "Got it."
+
+actions:
+  - utter_how_can_I_help
+  - utter_ask_ram
+  - utter_ask_camera
+  - utter_ask_battery
+  - utter_goodbye
+  - action_search
+  - action_show_latest_news
+  - utter_got_it
+
+

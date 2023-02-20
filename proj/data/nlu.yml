@@ -119,7 +119,6 @@ nlu:
   examples: |
     - mobile
     - mobiles
-    - phones
 
 - synonym: laptop
   examples: |
@@ -130,3 +129,31 @@ nlu:
     - refrigerator
     - washing machine
     - air conditioner
+
+- intent: goodbye
+  examples: |
+    - goodbye
+    - bye
+    - c ya
+    - c u
+    - ciao
+    - talk to you later
+    - see you around
+
+- intent: give_information
+  examples: |
+    - I'm looking for [8 GB RAM](ram)
+    - I would like [10 GB RAM](ram)
+    - I want a camera of [65 megapixel](camera)
+    - I'm looking for [15 megapixel](camera)
+    - [25 megapixel](camera)
+    - I was looking for [4000 mah](battery) battery backup
+    - [3500 mah](battery)
+    - around [16 GB RAM](ram)
+    - [8 GB RAM](ram)
+    - Well around [50 megapixel](camera)
+    - I am looking for [5000 mah](battery)  battery
+    - Well the battery should be [4300 mah](battery)
+    - Well I would like [25 mp](camera) camera
+    - A camera of [40 mp]
+    - around [8 GB RAM](ram)

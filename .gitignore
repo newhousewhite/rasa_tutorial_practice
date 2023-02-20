@@ -133,3 +133,4 @@ dmypy.json
 
 .rasa/
 models/
+__pycache__/
