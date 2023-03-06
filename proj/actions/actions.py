@@ -46,10 +46,12 @@ class ActionSearch(Action):
         # all calculations are done
         category = tracker.get_slot('category_slot')
         ram = tracker.get_slot('ram_slot')
+        camera = tracker.get_slot('camera_slot')
         battery = tracker.get_slot('battery_slot')
 
         dispatcher.utter_message(text="Here are your search results")
-        dispatcher.utter_message(text="The features you entered: " + str(category) + ", " + str(ram) + ", " + str(battery))
+        dispatcher.utter_message(text="The features you entered: " +
+                                      str(category) + ", " + str(ram) + ", " + str(camera) + ", " + str(battery))
 
         return []
 

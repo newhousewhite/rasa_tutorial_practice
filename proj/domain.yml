@@ -6,6 +6,8 @@ session_config:
 
 intents:
   - greet
+  - affirm
+  - deny
   - buy_electronics
   - latest_news_electronics
   - give_information
