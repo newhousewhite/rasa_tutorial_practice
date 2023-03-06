@@ -48,11 +48,14 @@ slots:
       - type: from_entity
         entity: camera
 
+# if having multiple texts for a response, it will randomly select one.
 responses:
   utter_how_can_I_help:
   - text: "Welcome. I'm your shopping bot. I can help you with finding a phone or laptop and providing the latest news for them!"
+  - text: "How can I help?"
   utter_ask_ram:
   - text: "How much GM RAM are you looking for?"
+  - text: "Tell me memory GM RAM you want."
   utter_ask_camera:
   - text: "What megapixel camera are you looking for?"
   utter_ask_battery:
