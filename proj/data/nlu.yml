@@ -83,6 +83,14 @@ nlu:
     - so saad
     - so sad
 
+- intent: stop
+  examples: |
+    - stop
+    - nevermind
+    - please stop
+    - i want to stop
+    - stop the form
+
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -114,6 +122,49 @@ nlu:
     - And new releases for [mobiles](category), whats the news
     - update me on the [mobile](category) news
     - show me the latest news for [mobiles](category)
+
+- intent: out_of_scope
+  examples: |
+    - blablablablalblab
+    - asdasdasdasd
+    - hmmmmmm
+    - hahahha
+    - ..
+    - where are you
+    - what do you
+    - ..
+    - what else can you do
+    - whats the weather update
+    - im sleeping
+
+- intent: buy_pizza
+  examples: |
+    - i'd like to buy a pizza
+    - i want a pizza
+    - can i buy a pizza
+    - I'm interestd in a savory round flattened bread of Italian origin
+    - i want to buy a pizza
+
+- intent: inform
+  examples: |
+    - i'd like a [large](pizza_size) pizza
+    - i want to order a [xl](pizza_size) [hawaii](pizza_type) pizza
+    - [medium](pizza_size) pizza
+    - [xl](pizza_size)
+    - [small](pizza_size)
+    - [s](pizza_size)
+    - [pepperoni](pizza_type)
+    - give me a [mozzarella](pizza_type) pizza
+    - [hawaii](pizza_type) pizza
+    - [smol](pizza_size)
+    - [hawaii](pizza_type)
+    - i want a [large](pizza_size) pizza
+    - [mozzarella](pizza_type)
+    - [hawaii](pizza_type)
+    - [veggie](pizza_type)
+    - [fungi](pizza_type)
+    - i want a [large](pizza_size) pizza
+    - [vegggie](pizza_type)
 
 - synonym: phone
   examples: |
@@ -157,3 +208,19 @@ nlu:
     - Well I would like [25 mp](camera) camera
     - A camera of [40 mp]
     - around [8 GB RAM](ram)
+
+- intent: ask_residence
+  examples: |
+    - where do you live
+    - in which city do you live
+    - whats your residence
+    - wheres your home
+    - wheres your house
+    - your city
+    - your town
+    - whats your hometown
+    - where do you stay
+    - where's your residence
+    - what is your city
+    - where are you staying
+    - wer do u stay

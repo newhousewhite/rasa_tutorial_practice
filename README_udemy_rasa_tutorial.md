@@ -1,5 +1,8 @@
 # Tutorial 1: Conversational AI with RASA [3]
 
+### Rasa version migration guide:
+* https://rasa.com/docs/rasa/migration-guide/#custom-policies-and-custom-components
+
 ### Start a rasa bot project
 ```commandline
 python -m rasa init --init-dir proj
@@ -58,10 +61,18 @@ python -m rasa run actions
 actions server and call server are different endpoints in rasa.
 
 Update endpoints.yml
+
+Shell test
 ```commandline
 python -m rasa shell
 ```
-<b>Rules</b>: always follow the same path. You can ahve conditions with Rules or have rules for conversation start. 
+
+Interactive mode
+```commandline
+python -m rasa interactive
+```
+
+<b>Rules</b>: always follow the same path. You can have conditions with Rules or have rules for conversation start. 
 
 c.f.) <b>Stories</b> uses a probabilistic model that is generalizable to unseen conversation paths.
 
@@ -118,8 +129,16 @@ Form -> Fallback, TwoStageFallback -> Memoization, Augmented Memoization -> Mapp
   * float
   * List (if you wanna store multiple values)
   * unfeaturized
+* Conditional slots:
+  * Something like having both laptop and phone which are followed by different slot category and slots to fill.
+
+# Debug Tips
+* Question 1: Entity recognition doesn't work well.
+  * A) Entity recognition looks at the context around the entity. So, it's important to add context around entity. If context is not provided in user's response, use custom slot mapping. 
 
 # References
 1. RASA learning: [conversational AI with RASA](https://learning.rasa.com/conversational-ai-with-rasa)
 2. https://github.com/bikashkumars/rasa
 3. Udemy: [Complete Chatbot Course Using Rasa Framework & Python](https://www.udemy.com/course/the-complete-chatbot-course-using-rasa-python-nlp)
+4. [Containers code for the learning center course](https://github.com/RasaHQ/conversational-ai-course-3.x)
+

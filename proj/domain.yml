@@ -14,6 +14,13 @@ intents:
   - goodbye
   - mood_great
   - bot_challenge
+  - request_pizza_form
+  - buy_pizza
+  - inform
+  - stop
+  - out_of_scope
+  - ask_residence
+
 
 entities:
   - category
@@ -21,6 +28,8 @@ entities:
   - battery
   - camera
   - phone
+  - pizza_size
+  - pizza_type
 
 slots:
   category_slot:
@@ -47,6 +56,24 @@ slots:
     mappings:
       - type: from_entity
         entity: camera
+  pizza_size:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: pizza_size
+  pizza_type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: pizza_type
+
+forms:
+  simple_pizza_form:
+    required_slots:
+      - pizza_size
+      - pizza_type
 
 # if having multiple texts for a response, it will randomly select one.
 responses:
@@ -62,10 +89,32 @@ responses:
   - text: "How much battery capacity are you looking for in the device?"
   utter_goodbye:
     - text: "It was nice talking to you! Goodbye!"
-  utter_got_it:
-    - text: "Got it."
+#  utter_got_it:
+#    - text: "Got it."
   utter_iamabot:
     - text: "I'm a bot."
+  utter_greet:
+    - text: "Hey! How are you?"
+  utter_happy:
+    - text: "Happy!"
+  utter_submit:
+    - text: "I will now order a pizza for you!"
+  utter_pizza_slots:
+    - text: "I will order a {pizza_size} {pizza_type} pizza."
+  utter_ask_continue:
+    - text: "Are you sure you want to stop the form?"
+  utter_ask_pizza_size:
+    - text: "What size would you like your pizza to be?"
+  utter_ask_pizza_type:
+    - text: "What kind of pizza would you like to buy?"
+  utter_out_of_scope:
+    - text: "Sorry, I can't handle that request."
+  utter_residence:
+    - text: "I live in this app all day long."
+    - text: "The virtual world is my playground. I'm always here."
+    - text: "Right here in this app. Whenever you need me."
+  utter_please_rephrase:
+    - text: "I'm sorry, I didn't get that. Can you rephrase?"
 
 actions:
   - utter_how_can_I_help
@@ -75,7 +124,15 @@ actions:
   - utter_goodbye
   - action_search
   - action_show_latest_news
-  - utter_got_it
+#  - utter_got_it
   - utter_iamabot
+  - utter_submit
+  - utter_pizza_slots
+  - utter_ask_continue
+  - validate_simple_pizza_form
+  - utter_out_of_scope
+  - utter_please_rephrase
+  - utter_residence
+  - action_your_residence
 
 
