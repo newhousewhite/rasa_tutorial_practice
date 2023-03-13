@@ -1,7 +1,7 @@
 version: "3.1"
 
 session_config:
-  session_expiration_time: 60
+  session_expiration_time: 60   # value in minute
   carry_over_slots_to_new_session: true
 
 intents:

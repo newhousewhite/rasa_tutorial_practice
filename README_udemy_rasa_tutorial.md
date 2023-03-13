@@ -8,6 +8,20 @@
 python -m rasa init --init-dir proj
 ```
 
+## RASA API
+Start REST API server
+```commandline
+python -m rasa run actions
+python -m rasa run --enable-api --cors "*" --debug --auth-token FILL_ME
+```
+* ```--cors *``` is for cross-origin resource sharing. It'll accept traffic from any source
+
+Client POST request examples:
+```commandline
+python clients/post_requests.py
+```
+Note that auth-token is set at the end of url with ```?token=$FILL_ME``` when requesting
+
 ## RASA NLU
 ### Train
 Under proj/data/nlu.yml, fill training data. Then, fill config.yml. Then

@@ -9,11 +9,16 @@ My practice repo. It follows RASA tutorials.
 
 Note: This setup doesn't use pyenv, but system shell.
 
-### Option 1: pip
+Virtualenv setup
 ```commandline
 brew install python@3.8
 python3.8 -m venv ./venv
 source ./venv/bin/activate
+```
+
+### Option 1: pip
+I didn't choose this option.
+```commandline
 pip install rasa[full]
 pip install --upgrade rasa
 rasa init
@@ -22,8 +27,8 @@ python -m spacy download en_core_web_md
 ```
 Project location: ROOT/proj
 
-
 ### Option 2: from source
+I chose this option.
 ```commandline
 curl -sSL https://install.python-poetry.org | python -
 export PATH="$HOME/.local/bin:$PATH" >> ~/.bash_profile
@@ -35,6 +40,12 @@ poetry update   # not included in the instruction, but good to do.
 pip install rasa[full]
 ```
 
+## FE package installs
+```commandline
+pip install -r 
+```
+
+
 ## Others
 1. Jupyter notebook
 ```commandline
@@ -45,7 +56,9 @@ brew link --overwrite jupyterlab
 # RASA Tutorial
 - [Note for Rasa Udemy Tutorial](README_udemy_rasa_tutorial.md)
 - [A lot of examples](https://github.com/RasaHQ/rasa/tree/main/examples)
-  - concertbot, e2ebot, formbot, knowledgebasebot, moodbot, nlg_server, rules, reminderbot, responseselectorbot 
+  - concertbot, e2ebot, formbot, knowledgebasebot, moodbot, nlg_server, rules, reminderbot, responseselectorbot
+- [Free Youtube Lecture](https://www.youtube.com/playlist?list=PLPEuR0vaS0nfvwiiKGVoaHt_E_NNLTgOl)
+  - focused on deployment: ngrok, flask, ...
 
 # RASA Note
 ### RASA Core
