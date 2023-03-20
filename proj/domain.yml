@@ -2,80 +2,92 @@ version: "3.1"
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
 
 intents:
   - greet
-  - affirm
-  - deny
-  - buy_electronics
-  - latest_news_electronics
-  - give_information
   - goodbye
-  - mood_great
   - bot_challenge
+  - buy_pizza
+  - user_inform_pizza
+  - ask_residence
+  - out_of_scope
+  - ask_latest_news_electronics
 
 entities:
+  - pizza_size
+  - pizza_type
   - category
-  - ram
-  - battery
-  - camera
-  - phone
 
 slots:
-  category_slot:
+  pizza_size:
     type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: category
-  ram_slot:
-    type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
       - type: from_entity
-        entity: ram
-  battery_slot:
+        entity: pizza_size
+  pizza_type:
     type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
       - type: from_entity
-        entity: battery
-  camera_slot:
+        entity: pizza_type
+  category:
     type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
       - type: from_entity
-        entity: camera
+        entity: category
+
+forms:
+  simple_pizza_form:
+    required_slots:
+      - pizza_size
+      - pizza_type
+  latest_news_form:
+    required_slots:
+      - category
 
 # if having multiple texts for a response, it will randomly select one.
 responses:
   utter_how_can_I_help:
-  - text: "Welcome. I'm your shopping bot. I can help you with finding a phone or laptop and providing the latest news for them!"
+  - text: "I'm your bot. How can I help?"
   - text: "How can I help?"
-  utter_ask_ram:
-  - text: "How much GM RAM are you looking for?"
-  - text: "Tell me memory GM RAM you want."
-  utter_ask_camera:
-  - text: "What megapixel camera are you looking for?"
-  utter_ask_battery:
-  - text: "How much battery capacity are you looking for in the device?"
-  utter_goodbye:
-    - text: "It was nice talking to you! Goodbye!"
-  utter_got_it:
-    - text: "Got it."
+  utter_submit_pizza:
+    - text: I will now order a pizza for you!
+  utter_submit_latest_news:
+    - text: I will now find latest news for you!
+  utter_pizza_slots:
+    - text: I will order a {pizza_size} {pizza_type} pizza.
+  utter_category_slots:
+    - text: I will show you latest news about {category}.
+  utter_ask_continue:
+    - text: Are you sure you want to stop the form?
+  utter_ask_pizza_size:
+    - text: What size would you like your pizza to be?
+  utter_ask_pizza_type:
+    - text: What kind of pizza would you like to buy?
   utter_iamabot:
-    - text: "I'm a bot."
+    - text: I'm a bot.
+  utter_goodbye:
+    - text: It was nice talking to you! Goodbye!
+  utter_residence:
+    - text: I live in this app all day long.
+    - text: The virtual world is my playground. I'm always here.
+    - text: Right here in this app. Whenever you need me.
+  utter_out_of_scope:
+    - text: Sorry, I can't handle that request.
 
 actions:
-  - utter_how_can_I_help
-  - utter_ask_ram
-  - utter_ask_camera
-  - utter_ask_battery
-  - utter_goodbye
-  - action_search
+  - action_your_residence
   - action_show_latest_news
-  - utter_got_it
+  - utter_category_slots
+  - utter_how_can_I_help
+  - utter_pizza_slots
+  - utter_submit
+  - validate_simple_pizza_form
   - utter_iamabot
-
+  - reset_simple_pizza_form
+  - utter_residence
+  - utter_out_of_scope
 

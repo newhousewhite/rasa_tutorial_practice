@@ -2,37 +2,7 @@
 version: "3.1"
 
 stories:
-- story: great + show_phones
-  steps:
-    - intent: greet
-    - action: utter_how_can_I_help
-    - intent: buy_electronics
-      entities:
-        - "category": "phone"
-    - action: utter_got_it
-    - action: utter_ask_ram
-    - intent: give_information
-      entities:
-        - "ram": "4 GB"
-    - action: utter_ask_camera
-    - intent: give_information
-      entities:
-        - "camera": "40 megapixel"
-    - action: utter_ask_battery
-    - intent: give_information
-      entities:
-        - "battery": "3000 mah"
-    - action: action_search
-    - intent: goodbye
-    - action: utter_goodbye
-
-- story: greet + show_latest_news
-  steps:
-  - intent: greet
-  - action: utter_how_can_I_help
-  - intent: latest_news_electronics
-    entities:
-        - "category": "phone"
-  - action: action_show_latest_news
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: greet only
+    steps:
+      - intent: greet
+      - action: utter_how_can_I_help

@@ -29,59 +29,7 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - talk to you later
 
 - intent: bot_challenge
   examples: |
@@ -90,22 +38,90 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-- intent: buy_electronics
+- intent: buy_pizza
   examples: |
-    - I would like to buy a [phone](category)
-    - I want to buy a [laptop](category)
-    - Please suggest me a good [laptop](category)
-    - I wanted to purchase a [phone](category)
-    - Can you recommend me a [laptop](category)
-    - give me some recommendations for [mobile](category)
-    - Can you suggest a [laptop](category)
-    - I wanna buy a [mobile](category)
-    - Im interested in purchasing a [phone](category)
-    - I wanted to buy a [refrigerator](category)
-    - show me a good [air conditioner](category)
-    - please recommend me a [washing machine](category)
+    - i'd like to buy a pizza
+    - i want a pizza
+    - can i buy a pizza
+    - I'm interestd in a savory round flattened bread of Italian origin
+    - i want to buy a pizza
 
-- intent: latest_news_electronics
+- intent: user_inform_pizza
+  examples: |
+    - i'd like a [large](pizza_size) pizza
+    - i want to order a [xl](pizza_size) [hawaii](pizza_type) pizza
+    - [medium](pizza_size) pizza
+    - [medium](pizza_size)
+    - [xl](pizza_size)
+    - [l](pizza_size)
+    - [m](pizza_size)    
+    - [s](pizza_size)
+    - [pepperoni](pizza_type)
+    - give me a [mozzarella](pizza_type) pizza
+    - [hawaii](pizza_type) pizza
+    - [small](pizza_size)
+    - [hawaii](pizza_type)
+    - i want a [large](pizza_size) pizza
+    - [mozzarella](pizza_type)
+    - [hawaii](pizza_type)
+    - [veggie](pizza_type)
+    - [fungi](pizza_type)
+
+# for reverted
+- intent: ask_residence
+  examples: |
+    - where do you live
+    - in which city do you live
+    - whats your residence
+    - wheres your home
+    - wheres your house
+    - your city
+    - your town
+    - whats your hometown
+    - where do you stay
+    - where's your residence
+    - what is your city
+    - where are you staying
+    - wer do u stay
+
+- intent: out_of_scope
+  examples: |
+    - blablablablalblab
+    - asdasdasdasd
+    - hmmmmmm
+    - hmmm
+    - hahahha
+    - ..
+    - where are you
+    - what do you
+    - what else can you do
+    - whats the weather update
+    - im sleeping
+    - a
+    - b
+    - c
+    - d
+    - e
+    - f
+    - g
+    - h
+    - i
+    - j
+    - k
+    - n
+    - o
+    - p
+    - q
+    - r
+    - t
+    - u
+    - v
+    - w
+    - x
+    - y
+    - z
+    
+- intent: ask_latest_news_electronics
   examples: |
     - Whats the latest news with [phones](category)
     - Can you tell me abou tthe trends regarding [phones](category)
@@ -114,46 +130,18 @@ nlu:
     - And new releases for [mobiles](category), whats the news
     - update me on the [mobile](category) news
     - show me the latest news for [mobiles](category)
+    - i want to know latest news about [mobile](category)
+    - i wanna know latest news about [mobile](category)
 
 - synonym: phone
   examples: |
     - mobile
     - mobiles
+    - phones
 
 - synonym: laptop
   examples: |
     - laptops
+    
 
-- lookup: category
-  examples: |
-    - refrigerator
-    - washing machine
-    - air conditioner
 
-- intent: goodbye
-  examples: |
-    - goodbye
-    - bye
-    - c ya
-    - c u
-    - ciao
-    - talk to you later
-    - see you around
-
-- intent: give_information
-  examples: |
-    - I'm looking for [8 GB RAM](ram)
-    - I would like [10 GB RAM](ram)
-    - I want a camera of [65 megapixel](camera)
-    - I'm looking for [15 megapixel](camera)
-    - [25 megapixel](camera)
-    - I was looking for [4000 mah](battery) battery backup
-    - [3500 mah](battery)
-    - around [16 GB RAM](ram)
-    - [8 GB RAM](ram)
-    - Well around [50 megapixel](camera)
-    - I am looking for [5000 mah](battery)  battery
-    - Well the battery should be [4300 mah](battery)
-    - Well I would like [25 mp](camera) camera
-    - A camera of [40 mp]
-    - around [8 GB RAM](ram)

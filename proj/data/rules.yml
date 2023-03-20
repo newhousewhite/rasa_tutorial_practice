@@ -1,0 +1,85 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+
+#######################
+# Pizza
+# ref: https://www.youtube.com/watch?v=hIWnpyTWsLQ
+- rule: Activate pizza form
+  steps:
+    - intent: buy_pizza
+    - action: reset_simple_pizza_form
+    - action: simple_pizza_form
+    - active_loop: simple_pizza_form
+
+# ref: https://www.youtube.com/watch?v=hIWnpyTWsLQ
+- rule: Submit Pizza form
+  condition:
+    - active_loop: simple_pizza_form
+  steps:
+    - action: simple_pizza_form
+    - active_loop: null
+    - slot_was_set:
+        - required_slot: null # it tells the form is done
+    - action: utter_submit_pizza
+    - action: utter_pizza_slots
+
+# ref: https://www.youtube.com/watch?v=YYh1ECnlw9o
+- rule: Interruption in pizza form
+  condition:
+    # Condition that form is active:
+    - active_loop: simple_pizza_form
+  steps:
+    # the case of an intent 'bot_challenge'
+    - intent: bot_challenge
+    - action: utter_iamabot
+    # return to form after handling the 'bot_challenge' intent
+    - action: simple_pizza_form
+    - active_loop: simple_pizza_form
+
+#######################
+# Latest news
+- rule: Activate ask latest news form
+  steps:
+    - intent: ask_latest_news_electronics
+    - action: reset_latest_news_form
+    - action: latest_news_form
+    - active_loop: latest_news_form
+
+# ref: https://www.youtube.com/watch?v=hIWnpyTWsLQ
+- rule: Submit latest news form
+  condition:
+    - active_loop: latest_news_form
+  steps:
+    - action: latest_news_form
+    - active_loop: null
+    - slot_was_set:
+        - required_slot: null # it tells the form is done
+    - action: utter_submit_latest_news
+    - action: utter_category_slots
+    - action: action_show_latest_news
+
+#######################
+# ask residence (chitchat)
+  # whenever ask_residence is predicted, trigger below action
+- rule: Rule to map 'ask_residence' intent
+  steps:
+    - intent: ask_residence
+    - action: action_your_residence
+
+#######################
+# handle out of scope
+- rule: out of scope
+  steps:
+    - intent: out_of_scope
+    - action: utter_out_of_scope

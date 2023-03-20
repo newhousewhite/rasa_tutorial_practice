@@ -1,9 +1,26 @@
 # Tutorial 1: Conversational AI with RASA [3]
 
+### Rasa version migration guide:
+* https://rasa.com/docs/rasa/migration-guide/#custom-policies-and-custom-components
+
 ### Start a rasa bot project
 ```commandline
 python -m rasa init --init-dir proj
 ```
+
+## RASA API
+Start REST API server
+```commandline
+python -m rasa run actions
+python -m rasa run --enable-api --cors "*" --debug --auth-token FILL_ME
+```
+* ```--cors *``` is for cross-origin resource sharing. It'll accept traffic from any source
+
+Client POST request examples:
+```commandline
+python clients/post_requests.py
+```
+Note that auth-token is set at the end of url with ```?token=$FILL_ME``` when requesting
 
 ## RASA NLU
 ### Train
@@ -61,6 +78,11 @@ Update endpoints.yml
 ```commandline
 python -m rasa shell
 ```
+Interactive mode
+```commandline
+python -m rasa interactive
+```
+
 <b>Rules</b>: always follow the same path. You can ahve conditions with Rules or have rules for conversation start. 
 
 c.f.) <b>Stories</b> uses a probabilistic model that is generalizable to unseen conversation paths.
@@ -118,8 +140,76 @@ Form -> Fallback, TwoStageFallback -> Memoization, Augmented Memoization -> Mapp
   * float
   * List (if you wanna store multiple values)
   * unfeaturized
+* Conditional slots:
+  * something like having both laptop and phone which are followed by different slot category and slots to fill.
+
+## Interaction with mySQL DB
+install mySQL server for mac, following [this guide](https://www.geeksforgeeks.org/how-to-install-mysql-on-macos/))
+After adding path of your mysql (/usr/local/mysql/bin/mysql) to `$PATH` in ~/.bash_profile
+```commandline
+sudo mysql -u root -p   
+# Password:  # then type your macbook password
+# Enter password:    # then type your mysql password you entered during installation
+```
+To start mysql as a root, type below
+```commandline
+sudo mysql -u root -p
+```
+add users
+```commandline
+CREATE USER 'rasa-user'@'localhost' IDENTIFIED BY 'password123';
+```
+grant permission
+```commandline
+GRANT ALL PRIVILEGES ON *.* TO 'rasa-user'@'localhost' WITH GRANT OPTION;
+```
+configure mysql
+```commandline
+# find where your config files are
+mysql --verbose --help | grep cnf
+# this didn't help find my config files.  I may have to change config later
+```
+create DB
+```commandline
+CREATE DATABASE shopping_db;
+```
+write data to SQL DB
+```commandline
+python -m pip install mysql-connector-python
+```
+install mysql connector in mac
+(ref: https://ruddra.com/install-mysqlclient-macos/)
+For connecting any other application to MySQL, you need to install a connector. You can do it like this:
+```commandline
+brew install mysql-connector-c
+echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> /Users/jangwon/.bash_profile
+echo -e 'export LDFLAGS="-L/usr/local/opt/mysql-client/lib"' >> /Users/jangwon/.bash_profile
+echo -e 'export CPPFLAGS="-I/usr/local/opt/mysql-client/include"' >> /Users/jangwon/.bash_profile
+echo -e 'export PKG_CONFIG_PATH="/usr/local/opt/mysql-client/lib/pkgconfig"' >> /Users/jangwon/.bash_profile
+xcode-select --install
+brew install openssl
+echo 'export PATH="/usr/local/opt/openssl@3/bin:$PATH"' >> /Users/jangwon/.bash_profile
+echo -e 'export LDFLAGS="-L/usr/local/opt/openssl@3/lib"' >> /Users/jangwon/.bash_profile
+echo -e 'export CPPFLAGS="-I/usr/local/opt/openssl@3/include"' >> /Users/jangwon/.bash_profile
+echo -e 'export PKG_CONFIG_PATH="/usr/local/opt/openssl@3/lib/pkgconfig"' >> /Users/jangwon/.bash_profile
+echo -e 'export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/' >> /Users/jangwon/.bash_profile
+brew unlink mysql
+brew link --overwrite mysql-connector-c --force
+echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> /Users/jangwon/.bash_profile
+python -m pip install mysqlclient
+brew unlink mysql-connector-c
+brew link --overwrite mysql
+python -m pip install mysqlclient
+```
+using mysql client in python: see [this youtube tutorial](https://www.youtube.com/watch?v=DdzIlzCfu4I)
+
+
+# Debug Tips
+* Question 1: Entity recognition doesn't work well.
+  * A) Entity recognition looks at the context around the entity. So, it's important to add context around entity. If context is not provided in user's response, use custom slot mapping.
 
 # References
 1. RASA learning: [conversational AI with RASA](https://learning.rasa.com/conversational-ai-with-rasa)
 2. https://github.com/bikashkumars/rasa
 3. Udemy: [Complete Chatbot Course Using Rasa Framework & Python](https://www.udemy.com/course/the-complete-chatbot-course-using-rasa-python-nlp)
+4. [Containers code for the learning center course](https://github.com/RasaHQ/conversational-ai-course-3.x)
