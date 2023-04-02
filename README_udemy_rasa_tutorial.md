@@ -203,6 +203,23 @@ python -m pip install mysqlclient
 ```
 using mysql client in python: see [this youtube tutorial](https://www.youtube.com/watch?v=DdzIlzCfu4I)
 
+# How to create messenger bot
+## ngrok
+see https://ngrok.com/docs/getting-started/ for mac OS and Linux
+go to https://dashboard.ngrok.com/get-started/your-authtoken, and get your authtoken. Then configure your ngrok as follows:
+```commandline
+ngrok config add-authtoken FILL ME
+```
+Then, start your ngrok http
+```commandline
+cd server
+bash run_ngrok.sh
+```
+Then, put your ngrok forwarding address to webhook of credentials.yml
+
+Instead of `ngrok config add-authtoken`, 
+## telegram
+* BotFather -> /start -> jk_udemy_tutorial_bot ->  
 
 # Debug Tips
 * Question 1: Entity recognition doesn't work well.
